@@ -1,38 +1,44 @@
 ---
 name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
-
+about: Report a bug or crash in Smooth Third Person Camera
+title: "[Bug] "
+labels: bug
+assignees: ""
 ---
 
-**Describe the bug**
-A clear and concise description of what the bug is.
+## Summary
+Describe the problem clearly and briefly.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+## Environment
+- Minecraft version:
+- Mod loader: (Fabric / Forge / NeoForge)
+- Loader version:
+- Smooth Third Person Camera version:
+- Java version:
+- OS:
 
-**Expected behavior**
-A clear and concise description of what you expected to happen.
+## What happened?
+Describe what actually happened.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+## Expected behavior
+Describe what you expected to happen.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
+## Steps to reproduce
+1. 
+2. 
+3. 
+4. 
 
-**Smartphone (please complete the following information):**
- - Device: [e.g. iPhone6]
- - OS: [e.g. iOS8.1]
- - Browser [e.g. stock browser, safari]
- - Version [e.g. 22]
+## Other installed mods
+List other mods that may be related.
+If none, write `none`.
 
-**Additional context**
-Add any other context about the problem here.
+## Logs / Crash report
+Please paste the relevant part of `latest.log` or the crash report.
+Do **not** paste secrets, tokens, or unrelated private info.
+
+## Screenshots / Videos
+If applicable, add screenshots or videos.
+
+## Additional notes
+Anything else that may help.
