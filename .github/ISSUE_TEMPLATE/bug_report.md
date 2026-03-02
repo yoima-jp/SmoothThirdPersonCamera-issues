@@ -11,7 +11,7 @@ Describe the problem clearly and briefly.
 
 ## Environment
 - Minecraft version:
-- Mod loader: (Fabric / Forge / NeoForge)
+- Mod loader: (Fabric / Forge)
 - Loader version:
 - Smooth Third Person Camera version:
 - Java version:
