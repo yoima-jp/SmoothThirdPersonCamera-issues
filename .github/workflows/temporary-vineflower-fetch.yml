@@ -1,29 +1,34 @@
 name: Temporary Vineflower Fetch
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - '.github/vineflower-trigger.txt'
+  issues:
+    types: [opened]
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   fetch:
     runs-on: ubuntu-latest
     steps:
-      - name: Download Vineflower
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Download and encode Vineflower
         run: |
+          set -euo pipefail
           curl --fail --location --retry 3 \
-            --output vineflower-1.12.0.jar \
+            --output /tmp/vineflower-1.12.0.jar \
             https://repo.maven.apache.org/maven2/org/vineflower/vineflower/1.12.0/vineflower-1.12.0.jar
-          test -s vineflower-1.12.0.jar
-          sha256sum vineflower-1.12.0.jar
-      - name: Upload decompiler
-        uses: actions/upload-artifact@v4
-        with:
-          name: vineflower-1.12.0
-          path: vineflower-1.12.0.jar
-          if-no-files-found: error
-          retention-days: 1
+          test -s /tmp/vineflower-1.12.0.jar
+          mkdir -p .github/vineflower-payload
+          rm -f .github/vineflower-payload/chunk.*
+          sha256sum /tmp/vineflower-1.12.0.jar > .github/vineflower-payload/SHA256SUMS.txt
+          base64 -w0 /tmp/vineflower-1.12.0.jar | split -b 700000 - .github/vineflower-payload/chunk.
+      - name: Commit encoded payload
+        run: |
+          set -euo pipefail
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add .github/vineflower-payload
+          git commit -m 'ci: store temporary Vineflower payload'
+          git push
